@@ -25,8 +25,6 @@ class GroceryStore(db.Model):
     def __repr__(self):
         return f"<{self.id}:{self.title}>"
 
-    # created_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    # created_by = db.relationship('User')
 
 class GroceryItem(db.Model):
     """Grocery Item model."""
@@ -46,12 +44,3 @@ class GroceryItem(db.Model):
     
     def __repr__(self):
         return f"<{self.id}:{self.name}>"
-
-
-    # created_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    # created_by = db.relationship('User')
-
-# class User(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(15), nullable=False)
-#     password = db.Column(db.String(15), nullable=False)

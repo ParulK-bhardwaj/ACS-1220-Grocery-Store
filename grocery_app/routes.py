@@ -49,10 +49,7 @@ def new_item():
             photo_url=form.photo_url.data,
             store=form.store.data
         )
-        print(new_item)
-        
         db.session.add(new_item)
-        print(new_item)
         db.session.commit()
 
         flash("New item was created successfully.")
@@ -92,6 +89,5 @@ def item_detail(item_id):
         return redirect(url_for("main.item_detail",item_id=item.id))
 
     item = GroceryItem.query.get(item_id)
-    print(item)
     return render_template('item_detail.html', item=item, form=form)
 
