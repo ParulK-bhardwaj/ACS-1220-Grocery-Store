@@ -17,7 +17,6 @@ class GroceryStore(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
     address = db.Column(db.String(200), nullable=False)
-    
     items = db.relationship('GroceryItem', back_populates='store')
 
     def __str__(self):
@@ -43,10 +42,10 @@ class GroceryItem(db.Model):
     store = db.relationship('GroceryStore', back_populates='items')
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.name}"
     
     def __repr__(self):
-        return f"<{self.id}:{self.title}>"
+        return f"<{self.id}:{self.name}>"
 
 
     # created_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))

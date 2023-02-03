@@ -40,7 +40,7 @@ def new_store():
 def new_item():
     # Created a GroceryItemForm
     form = GroceryItemForm()
-    # TODO: If form was submitted and was valid:
+
     if form.validate_on_submit():
         new_item = GroceryItem(
             name=form.name.data,
@@ -49,7 +49,10 @@ def new_item():
             photo_url=form.photo_url.data,
             store=form.store.data
         )
+        print(new_item)
+        
         db.session.add(new_item)
+        print(new_item)
         db.session.commit()
 
         flash("New item was created successfully.")
@@ -60,9 +63,10 @@ def new_item():
 @main.route('/store/<store_id>', methods=['GET', 'POST'])
 def store_detail(store_id):
     store = GroceryStore.query.get(store_id)
+
     # Created a GroceryStoreForm and pass in `obj=store`
     form = GroceryStoreForm(obj=store)
-    # TODO: If form was submitted and was valid:
+
     if form.validate_on_submit():
         form.populate_obj(store)
 
@@ -80,12 +84,14 @@ def item_detail(item_id):
     # Created a GroceryItemForm and pass in `obj=item`
     form = GroceryItemForm(obj=item)
     if form.validate_on_submit():
-        form.populate.obj(item)
+        form.populate_obj(item)
+
         db.session.add(item)
         db.session.commit()
         flash("Item was updated successfully")
         return redirect(url_for("main.item_detail",item_id=item.id))
 
     item = GroceryItem.query.get(item_id)
+    print(item)
     return render_template('item_detail.html', item=item, form=form)
 
