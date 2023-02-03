@@ -49,6 +49,7 @@ def new_item():
             photo_url=form.photo_url.data,
             store=form.store.data
         )
+        
         db.session.add(new_item)
         db.session.commit()
 
