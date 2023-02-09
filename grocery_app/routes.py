@@ -107,7 +107,17 @@ def add_to_shopping_list(item_id):
     current_user.shopping_list_user.append(item)
     db.session.add(current_user)
     db.session.commit()
-    flash("Item has been successfully added to the shopping list")
+    flash("Item has been successfully added to the shopping list.")
+    return redirect(url_for("main.shopping_list"))
+
+# Stretch Challenge: removes item from current_user's shopping list
+@main.route('/remove_from_shopping_list/<item_id>', methods=['POST'])
+def remove_from_shopping_list(item_id):
+    item = GroceryItem.query.get(item_id)
+    current_user.shopping_list_user.remove(item)
+    db.session.add(current_user)
+    db.session.commit()
+    flash("Item has been successfully removed from the shopping list.")
     return redirect(url_for("main.shopping_list"))
 
 # ... get logged in user's shopping list items ...
