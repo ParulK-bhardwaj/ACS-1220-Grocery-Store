@@ -31,9 +31,7 @@ import os
 app = Flask(__name__)
 app.config.from_object(Config)
 
-
 db = SQLAlchemy(app)
-
 
 ###########################
 # Authentication
@@ -51,3 +49,19 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 bcrypt = Bcrypt(app)
+
+#  Main Blueprint
+
+from grocery_app.routes import main
+
+app.register_blueprint(main)
+
+with app.app_context(): 
+    db.create_all()
+
+# Auth Blueprint
+from grocery_app.routes import auth
+app.register_blueprint(auth)
+
+with app.app_context(): 
+    db.create_all()
