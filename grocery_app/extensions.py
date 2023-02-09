@@ -63,5 +63,5 @@ with app.app_context():
 from grocery_app.routes import auth
 app.register_blueprint(auth)
 
-with app.app_context(): 
-    db.create_all()
+# with app.app_context(): 
+#     db.create_all()
