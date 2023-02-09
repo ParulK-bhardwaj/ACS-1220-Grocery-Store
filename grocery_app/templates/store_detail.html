@@ -3,7 +3,10 @@
 
 <h1>Store - {{ store.title }}</h1>
 <p>
-    <strong>Address:</strong> {{ store.address }}
+    <strong>Address: </strong> {{ store.address }}
+</p>
+<p>
+    <strong>Created By: </strong> {{ store.created_by }}
 </p>
 
 <h2>Items</h2>
@@ -11,8 +14,8 @@
 <div class="items">
     {% for item in store.items %}
     <div class="item-details">
-        <a href="/item/{{ item.id }}"><img src="{{ item.photo_url }}" alt="{{ item.name }}" width="200px">
-        <p><strong>{{ item.name }}</strong></p></a>
+        <a href="/item/{{ item.id }}"><img src="{{ item.photo_url }}" alt="{{ item.name }}" width="200px"></a>
+        <p><strong>{{ item.name }}</strong></p>
         <p><strong>Price: ${{ item.price }}</strong></p>
     </div>
     {% endfor %}

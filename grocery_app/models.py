@@ -51,11 +51,15 @@ class GroceryItem(db.Model):
     def __repr__(self):
         return f"<{self.id}:{self.name}>"
 
+# many-to-many relationship between User and GroceryItem for the shopping list items that fixed the log in error. 
 class User(UserMixin, db.Model):
     "User Model"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(80), nullable=False)
+
+    def __str__(self):
+        return f'{self.username}'
 
     def __repr__(self):
         return f'<User: {self.username}>'
