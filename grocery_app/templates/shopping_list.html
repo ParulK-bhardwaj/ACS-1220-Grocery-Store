@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Shopping List</h1>
+    {% for item in shopping_list %}
+        <div class="shopping-list">
+            <p>{{ loop.index }}. <a href="/item/{{ item.id }}">{{ item.name }}</a></p>
+            <a href="/item/{{ item.id }}"><img src="{{ item.photo_url }}" width="125px" height="125px"></a>
+            <p><strong>Price: $</strong>{{ item.price }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

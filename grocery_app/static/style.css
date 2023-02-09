@@ -56,7 +56,7 @@ div.store {
     margin-bottom: 10px;
 }
 
-div.items {
+div.items div.shopping-list{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

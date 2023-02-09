@@ -2,7 +2,9 @@
 {% block content %}
 
 <h1>Item - {{ item.name }}</h1>
-
+<form action="/add_to_shopping_list/{{ item.id }}" method="post">
+    <input type="submit" value="Add to list">
+</form>
 <p><img src="{{ item.photo_url }}" width="250px" height="250px"></p>
 
 <p><strong>Price: </strong> ${{ item.price }}</p>
